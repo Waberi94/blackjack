@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a17">
+  <meta name="description" content="Pull up a seat at Blackjack Club. A simple, free blackjack game with practice chips.">
+  <title>Blackjack Club — Take a seat</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Blackjack Club home"><span class="brand-suit" aria-hidden="true">♠</span> BLACKJACK <span class="brand-light">CLUB</span></a>
+    <div class="header-right"><span class="practice-label">JUST FOR THE FUN OF IT</span><button class="rules-button" id="rules-open">How to play <span aria-hidden="true">↗</span></button></div>
+  </header>
+
+  <main>
+    <div class="page-heading">
+      <div><p class="eyebrow">THE CLASSICS / 01</p><h1>Blackjack<span class="gold">.</span></h1></div>
+      <div class="table-info"><span class="practice-pill">Practice table</span><p>5–500 chips per hand</p></div>
+    </div>
+
+    <section class="table" aria-label="Blackjack playing table">
+      <div class="table-inner">
+        <div class="hand-area dealer-area">
+          <div class="hand-label">DEALER <span class="score" id="dealer-score" aria-label="Dealer score">—</span></div>
+          <div class="cards" id="dealer-cards" aria-label="Dealer's cards">
+            <div class="card card-back" role="img" aria-label="Face-down card"><span>♠</span></div>
+            <div class="card card-back" role="img" aria-label="Face-down card"><span>♠</span></div>
+          </div>
+        </div>
+        <div class="table-mark" aria-hidden="true"><div class="mark-line"><span>✦</span> BLACKJACK PAYS 3 TO 2 <span>✦</span></div><p>DEALER STANDS ON ALL 17s</p></div>
+        <div class="hand-area player-area">
+          <div class="cards" id="player-cards" aria-label="Your cards"><div class="card card-slot" aria-hidden="true">♠</div><div class="card card-slot" aria-hidden="true">♠</div></div>
+          <div class="hand-label">YOUR HAND <span class="score" id="player-score" aria-label="Your score">—</span></div>
+        </div>
+        <span class="table-number">TABLE № 01</span>
+      </div>
+    </section>
+
+    <div class="round-message" role="status" aria-live="polite" aria-atomic="true"><span class="message-accent" aria-hidden="true">✦</span><span id="message">Choose your bet, then let the cards do the talking.</span></div>
+
+    <section class="control-bar" aria-label="Game controls">
+      <div class="balance-block"><span class="eyebrow">YOUR BALANCE</span><div class="balance-value"><span class="balance-symbol" aria-hidden="true">◎</span> <span id="balance">1,000</span><span class="unit">chips</span></div><button id="refill" class="text-button" hidden>Start again with 1,000 chips</button></div>
+      <div class="bet-block"><div class="bet-heading"><label class="eyebrow" for="bet-value">YOUR BET</label><span class="bet-amount"><button class="step-button" id="bet-less" aria-label="Decrease bet by 5">−</button><output id="bet-value">25</output><button class="step-button" id="bet-more" aria-label="Increase bet by 5">+</button></span></div>
+        <div class="chips" aria-label="Choose bet amount"><button class="chip chip-white" data-bet="5" aria-pressed="false" aria-label="Bet 5 chips"><span>5</span></button><button class="chip chip-red" data-bet="25" aria-pressed="true" aria-label="Bet 25 chips"><span>25</span></button><button class="chip chip-blue" data-bet="50" aria-pressed="false" aria-label="Bet 50 chips"><span>50</span></button><button class="chip chip-dark" data-bet="100" aria-pressed="false" aria-label="Bet 100 chips"><span>100</span></button></div>
+      </div>
+      <div class="action-block"><button class="button deal-button" id="deal"><span aria-hidden="true">♠</span> Deal cards</button><div class="play-actions" id="play-actions" hidden><button class="button hit-button" id="hit">Hit <span aria-hidden="true">+</span></button><button class="button stand-button" id="stand">Stand</button><button class="button double-button" id="double">Double <span aria-hidden="true">×2</span></button></div><p id="action-hint">Your seat. Your call.</p></div>
+    </section>
+    <footer><span>♣ <span>Good cards. Better company.</span></span><span>Practice chips only · No real money</span></footer>
+  </main>
+
+  <dialog id="rules-dialog" aria-labelledby="rules-title">
+    <div class="dialog-top"><span class="eyebrow">A QUICK REFRESHER</span><button id="rules-close" class="close-button" aria-label="Close rules">×</button></div>
+    <h2 id="rules-title">Know your hand<span class="gold">.</span></h2>
+    <p>Get closer to 21 than the dealer, without going over.</p>
+    <dl class="rules-list"><div><dt>The cards</dt><dd>Number cards count as shown. J, Q, and K are worth 10. An ace counts as 1 or 11, whichever helps your hand.</dd></div><div><dt>Your move</dt><dd><strong>Hit</strong> takes another card. <strong>Stand</strong> keeps your total. <strong>Double</strong> doubles your bet, gives you exactly one more card, then stands. Double is available on your first two cards if you have enough chips.</dd></div><div><dt>The dealer</dt><dd>The dealer reveals their hidden card and draws until reaching 17 or more, including a soft 17.</dd></div><div><dt>The payout</dt><dd>A win pays 1:1. An ace and a 10-value card on the initial deal is blackjack and pays 3:2. A tie returns your bet. Dealer blackjack is checked on the initial deal.</dd></div><div><dt>This table</dt><dd>One freshly shuffled deck each round. Bets from 5 to 500 chips. No splitting, insurance, or surrender. Your practice balance resets when you reload.</dd></div></dl>
+    <button id="rules-done" class="button deal-button">Back to the table</button>
+  </dialog>
+</body>
+</html>
